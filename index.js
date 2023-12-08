@@ -1,17 +1,6 @@
 import * as contactService from './contacts.js';
 import { program } from 'commander';
 
-program
-    .option('-a, --action <type>')
-    .option('-i, --id <type>')
-    .option('-n, --name <type>')
-    .option('-e, --email <type>')
-    .option('-p, --phone <type>')
-    
-program.parse();
-const options = program.opts();
-invokeAction(options);
-
 const invokeAction = async({ action, id, ...data }) => {
   switch (action) {
     case 'list':
@@ -31,3 +20,13 @@ const invokeAction = async({ action, id, ...data }) => {
   }
 }
 
+program
+    .option('-a, --action <type>')
+    .option('-i, --id <type>')
+    .option('-n, --name <type>')
+    .option('-e, --email <type>')
+    .option('-p, --phone <type>')
+    
+program.parse();
+const options = program.opts();
+invokeAction(options);
